@@ -1,0 +1,12 @@
+spring:
+  config:
+    import: optional:secrets.yml
+  main:
+    allow-bean-definition-overriding: true
+
+notion:
+  apiUrl: https://api.notion.com
+  apiVersion: 2021-08-16
+  #authToken: ENC(VdfUA80tN4MmFXEkPUdPRKcepHNWnYvI/OkwFM01L5G4n0cr3nusZkAhb2kS/q1K)
+  authToken: ENC(fWlGOHUZ9wBA8etzHTcOcrRin0mxdIvO)
+  databaseId: ENC(n6cGsHElEzOWQAi/3eMEqJw5uGPFPln0)
