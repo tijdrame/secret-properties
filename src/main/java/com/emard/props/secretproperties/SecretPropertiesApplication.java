@@ -45,12 +45,13 @@ public class SecretPropertiesApplication {
 			ModelMapper mapper = new ModelMapper();
 			//ProductDto dto = mapper.map(eProduct, ProductDto.class);
 			TypeMap<EProduct, ProductDto> propertyMapper = mapper.createTypeMap(EProduct.class, ProductDto.class);
-			propertyMapper.addMapping(EProduct::getName, ProductDto::setNameDto);
+			//propertyMapper.addMapping(EProduct::getName, ProductDto::setNameDto);
+			//ProductDto dto = mapper.map(eProduct, ProductDto.class);
+			
+			propertyMapper.addMappings(
+      			m -> m.map(src -> src.getName(), ProductDto::setNameDto)
+    		);
 			ProductDto dto = mapper.map(eProduct, ProductDto.class);
-			/*modelMapper.typeMap(EProduct.class, ProductDto.class).addMappings(mapper -> {
-				mapper.map(src -> src.getName(),
-				ProductDto::nameDto);
-			});*/
 			List<ProductDto> productDtos = eProducts.stream().map(e -> mapper.map(e, ProductDto.class)).collect(Collectors.toList());
 			System.out.println("dto="+dto);
 			System.out.println("productDtos="+productDtos);
