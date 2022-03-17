@@ -1,5 +1,6 @@
 package com.emard.props.secretproperties.web;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import com.emard.props.secretproperties.config.NotionConfigProperties;
@@ -19,8 +20,14 @@ public class NotionController {
 
     @GetMapping("/notion")
     public Map<String, String> printAllProps() {
-        return Map.of("apiUrl", notionConfig.getApiUrl(), "apiVersion", notionConfig.getApiVersion(), "authToken",
-                notionConfig.getAuthToken(), "databaseId", notionConfig.getDatabaseId());
+        Map<String, String> map = new HashMap<>();
+        map.put("apiUrl", notionConfig.getApiUrl());
+        map.put("apiVersion", notionConfig.getApiVersion());
+        map.put("authToken", notionConfig.getAuthToken());
+        map.put("databaseId", notionConfig.getDatabaseId());
+        return map;
+        //return Map.of("apiUrl", notionConfig.getApiUrl(), "apiVersion", notionConfig.getApiVersion(), "authToken",
+          //      notionConfig.getAuthToken(), "databaseId", notionConfig.getDatabaseId());
     }
 
 }
